@@ -1,0 +1,23 @@
+# BACKEND #
+# BUILD STAGE #
+FROM maven:3.8.3-openjdk-17 AS build
+COPY backend/helloworld/src /home/app/backend/src
+COPY backend/helloworld/pom.xml /home/app/backend
+RUN mvn -f /home/app/backend/pom.xml clean package
+
+# RUN STAGE #
+FROM openjdk:17-alpine
+COPY --from=build /home/app/backend/target/helloworld-0.0.1-SNAPSHOT.jar /usr/local/lib/helloworld-0.0.1-SNAPSHOT.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/usr/local/lib/helloworld-0.0.1-SNAPSHOT.jar"]
+
+
+# FRONTEND #
+FROM node:20.4.0-buster
+WORKDIR /home/app/frontend/
+COPY frontend/helloworld/package.json /home/app/frontend/package.json
+RUN npm install
+RUN npm install -g @angular/cli
+COPY frontend/helloworld/* /home/app/frontend/
+CMD ng serve --host 0.0.0.0
+#WORKDIR /home
