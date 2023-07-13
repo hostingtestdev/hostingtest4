@@ -22,7 +22,7 @@ public class HelloWorldController {
     @GetMapping("/bitte")
     public String hello() throws IOException {
     	try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
-      HttpGet httpget = new HttpGet("http://hostingtest-v3:8080/api/v1/hello");
+      HttpGet httpget = new HttpGet("http://hostingtest-20-backend:8080/api/v1/hello");
 
       System.out.println("Executing GET request...");
       HttpResponse response = httpclient.execute(httpget);
