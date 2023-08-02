@@ -3,6 +3,11 @@ kind: Route
 metadata:
   labels:
     app: backend-pipeline
+    app.kubernetes.io/component: backend-pipeline
+    app.kubernetes.io/instance: backend-pipeline
+    app.kubernetes.io/name: backend-pipeline
+    app.kubernetes.io/part-of: spring-boot-version-one
+    app.openshift.io/runtime-version: latest
   name: backend-pipeline
 spec:
   port:
