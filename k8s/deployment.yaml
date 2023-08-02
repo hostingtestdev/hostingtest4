@@ -23,8 +23,3 @@ spec:
               protocol: TCP
             - containerPort: 8080
               protocol: TCP
-          env:
-            - name: VOTING_API_SERVICE_HOST
-              value: backend-pipeline
-            - name: VOTING_API_SERVICE_PORT
-              value: "8080"
