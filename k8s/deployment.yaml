@@ -17,7 +17,7 @@ spec:
       containers:
         - image: image-registry.openshift-image-registry.svc:5000/cic-controlbook-dev/backend-pipeline:latest
           imagePullPolicy: Always
-          name: pipelines-vote-ui
+          name: backend-pipeline
           ports:
             - containerPort: 8080
               protocol: TCP
