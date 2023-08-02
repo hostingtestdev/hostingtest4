@@ -1,7 +1,7 @@
 # BACKEND #
 # BUILD STAGE #
-#FROM maven:3.8.3-openjdk-17 AS build
-FROM golang:latest as builder
+FROM maven:3.8.3-openjdk-17 AS maven_builder
+#FROM golang:latest as builder
 #COPY backend2/helloworld/src /home/app/backend/src
 #COPY backend2/helloworld/pom.xml /home/app/backend
 #RUN mvn -f /home/app/backend/pom.xml clean package
