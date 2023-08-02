@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: backend-pipeline
+  name: backend-pipeline
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-pipeline
+  template:
+    metadata:
+      labels:
+        app: backend-pipeline
+    spec:
+      containers:
+        - image: image-registry.openshift-image-registry.svc:5000/cic-controlbook-dev/backend-pipeline:latest
+          imagePullPolicy: Always
+          name: pipelines-vote-ui
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: VOTING_API_SERVICE_HOST
+              value: backend-pipeline
+            - name: VOTING_API_SERVICE_PORT
+              value: "8080"
