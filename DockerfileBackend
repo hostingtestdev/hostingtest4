@@ -1,6 +1,6 @@
 # BACKEND #
 # BUILD STAGE #
-FROM maven:3.8.3-openjdk-17 AS build
+FROM docker.io/maven:3.8.3-openjdk-17 AS build
 COPY backend/helloworld/src /home/app/backend/src
 COPY backend/helloworld/pom.xml /home/app/backend
 RUN mvn -f /home/app/backend/pom.xml clean package
